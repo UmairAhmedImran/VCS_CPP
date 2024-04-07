@@ -1,18 +1,26 @@
-#include <algorithm>
-#include <complex>
+#include <fstream>
 #include<iostream>
 #include <ostream>
+#include <pstl/glue_algorithm_defs.h>
 #include <string>
 using namespace std;
 
 
-void initMethod(string initCommand) {
-	cout << initCommand << endl;
+void initMethod(string fileName,string initCommand) {
+	fileName.erase(0,2);
+	string programFile = fileName + ".txt";
+	ifstream previousFIle(programFile); 
+	if (previousFIle) {
+		cout << "Pit have been initialized\nor some file with same name is causing error\ntype --help command for help." << endl;
+	}else {	
+	ofstream MyFile(programFile);
+	cout << "Pit have been initialized" << endl;
+	MyFile.close();
 }
+	}
 void helpMethod(string helpCommand) {
 	cout << helpCommand << endl;
 }
-
 void pushMethod(string pushCommand) {
 	cout << pushCommand << endl;
 }
@@ -54,7 +62,7 @@ int main(int argc, char* argv[]) {
 		/* string command2 = "\0"; */
 		try {
 		if (command1 == "init" && argc == 2) {
-			initMethod(command1);
+			initMethod(argv[0], command1);
 		} 
 		else if (command1 == "--help" && argc == 2 ) {
 			helpMethod(command1);
