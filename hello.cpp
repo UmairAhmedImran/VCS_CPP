@@ -19,14 +19,10 @@ void initMethod(string fileName,string initCommand) {
 }
 	}
 void helpMethod(string helpCommand) {
-	cout << helpCommand << endl;
+	cout << "\nPit have total of 6 commands. The commands can be used in a simple fashion.\n To execute a command type the use ./[name of executable file] [command] [option of command if available]\n\n\n The function of each command are defined below:\n\n\t --help\t\t\t used for showing help about the pit.\n\n\t init\t\t\t used to initialize a pit repository.\n\n\t add [file]\t\t used to add file(s) to be staged.\n\n\t commit [message]\t used to commit the changes of a file.\n\n\t log\t\t\t used to see the log file.\n\n\t push\t\t\t used to push the changes of the file.\n " << endl;
 }
 void pushMethod(string pushCommand) {
 	cout << pushCommand << endl;
-}
-
-void pullMethod(string pullCommand) {
-	cout << pullCommand << endl;
 }
 
 void addMethod(string addCommand, string filename) {
@@ -45,9 +41,6 @@ void logMethod(string logCommand) {
 	cout << logCommand << endl;
 }
 
-void statusMethod(string statusCommand) {
-	cout << statusCommand << endl;
-}
 int main(int argc, char* argv[]) {
 	
 	if (argc == 1) {
@@ -59,7 +52,6 @@ int main(int argc, char* argv[]) {
 	}
 	else {
 		string command1 = argv[1];
-		/* string command2 = "\0"; */
 		try {
 		if (command1 == "init" && argc == 2) {
 			initMethod(argv[0], command1);
@@ -69,9 +61,6 @@ int main(int argc, char* argv[]) {
 		}
 		else if (command1 == "push" && argc == 2) {
 			pushMethod(command1);
-		}
-		else if (command1 == "pull" && argc == 2) {
-			pullMethod(command1);
 		}
 		else if (command1 == "add" && argc == 3) {
 			string filename = argv[2];
@@ -83,9 +72,6 @@ int main(int argc, char* argv[]) {
 		} 
 		else if (command1 == "log" && argc == 2) {
 			logMethod(command1);
-		}
-		else if (command1 == "status" && argc == 2) {
-			statusMethod(command1);
 		}
 		else {
 			throw 404;
